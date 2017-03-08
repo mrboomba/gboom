@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Fine Meow hai jor si</title>
+	<meta charset="utf-8">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<title>Start Game</title>
+	<style type="text/css">
 		
-<style>
-	#main{
+	.cat{
 		width: 500px;
 		height: 500px;
+		background-color: #0E9F98;
 	}
-	
-	
-	.IMG{
-		width: 250px;
-		height: 250px;
-		margin: 0;
-		float: left;
-	}
-	html, body{
-		padding:0px;
-		margin:0px;
-		/*height:100%;*/
-		/*padding-bottom: 30px;*/
-		}
-</style>
 
-<script type="text/javascript">
-	function start()
-	{
-		var mainNode = document.getElementById('main');
-		for (var i = 0; i <4; i++) 
-		{
-			 var node = document.createElement("IMG");     
-			 // node.setAttribute("id","x" +i);              
-			 //   // node.className = "mini";
-			 node.src = "http://p2.s1sf.com/ho/0/ud/187/936001/b-2.jpg";
-			 node.setAttribute("width", "250");
-    		node.setAttribute("height", "250");
-			   // node.style.background-color  = "red";
-			  
-			mainNode.appendChild(node); 
-			
-		}
 
-		
-	}
-	</script>
+	</style>
 </head>
-<body  onload="start()">
-		<div id="main" >
-			
+<body>	
+		<div class="container">
+
+			<div class="row">
+		   		 <div class="span8">
+
+		   			 Main
+
+
+		   		 </div>
+		   		 <div class="span4">
+
+		   			 Sidebar
+
+		    	</div>
 		</div>
+
+
+
+		</div>
+
 		
+		<!-- <div class="container">
+		<div class="cat"></div></div> -->
+
+<script src="jquery.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
