@@ -8,4 +8,9 @@ router.get('/',function(req,res){
 
 })
 
+router.get('/index',function(req,res){
+	res.sendFile(path.resolve('view/index.html'));
+
+})
+
 module.exports = router;
