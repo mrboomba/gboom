@@ -9,30 +9,110 @@
 	<title>Start Game</title>
 	<style type="text/css">
 		
-	.container{
-		width: 500px;
-		height: 500px;
+	#main{
+		width: 600px;
+		height: 600px;
 		background-color: #0E9F98;
 	}
-
+	/*.row{
+		width: 50px;
+		height: 50px;
+		background-color: #4F1515;
+	}
+	.span8{
+		background-color: #FFFFFF;
+	}*/
+/*.IMG{
+		width: 250px;
+		height: 250px;
+		margin: 0;
+		float: left;
+	}*/
 
 	</style>
+	<script type="text/javascript">
+	var level =1;
+	
+			
+	var arrayimg =[];
+	arrayimg[0] = "img/cat.jpg";
+	arrayimg[1] = "img/dog1.jpg";
+	arrayimg[2] = "img/dog2.jpg";
+	arrayimg[3] = "img/dog3.jpg";
+	arrayimg[4] = "img/dog4.jpg";
+	arrayimg[5] = "img/dog5.jpg";
+	arrayimg[6] = "img/dog6.jpg";
+	arrayimg[7] = "img/dog7.jpg";
+	arrayimg[8] = "img/dog8.jpg";
+		
+
+	function start()
+	{	
+		
+		le = 2;
+		k = le*le;
+		var mainNode = document.getElementById('main');
+		for (var i =0; i <k; i++) 
+		{
+			 var node = document.createElement("IMG");  
+			 node.setAttribute("id","x"+i );  
+			 node.src = "arrayimg[0]";  
+			 node.setAttribute("width",600/le);
+			 node.setAttribute("height",600/le);
+			 node.onclick = function(){	;
+			 	$("#main").empty("");
+			 	start2(++level);
+			 };
+			mainNode.appendChild(node); 					
+		}
+
+	}
+
+	function start2(level)
+	{	
+		if (level<=15) {
+				if (level==2) {
+			le = 3;
+		}else{
+			le++;;
+		}
+		k = le*le;
+		var mainNode = document.getElementById('main');
+		for (var i =0; i <k; i++) 
+		{
+			 var node = document.createElement("IMG");  
+			 node.setAttribute("id","x"+i );  
+			 node.src = "http://p2.s1sf.com/ho/0/ud/187/936001/b-2.jpg";  
+			 node.setAttribute("width",600/le);
+			 node.setAttribute("height",600/le);
+			 node.onclick = function(){	;
+			 	$("#main").empty("");
+			 	start2(++level);
+			 };
+			mainNode.appendChild(node); 					
+		}
+		}else{
+				console.log("high score");
+		}
+
+		
+
+	}
+	
+	</script>
+	
 </head>
-<body>	
-		<div class="container">
-
-			<div class="row">
+<body onload="start()">	
+		<div id="main">
+		
+		<!-- <img src="http://p2.s1sf.com/ho/0/ud/187/936001/b-2.jpg" id="Img"> -->
+			<!-- <div class="row">
 		   		 <div class="span8">
-
 		   			 Main
-
-
 		   		 </div>
 		   		 <div class="span4">
-
 		   			 Sidebar
-
-		    	</div>
+		    	</div> -->
 		</div>
 
 
