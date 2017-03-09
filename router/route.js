@@ -4,12 +4,12 @@ var path = require('path');
 
 
 router.get('/',function(req,res){
-	res.sendFile(path.resolve('view/home.html'));
+	res.sendFile(path.resolve('view/index.html'));
 
 })
 
-router.get('/index',function(req,res){
-	res.sendFile(path.resolve('view/index.html'));
+router.get('/home',function(req,res){
+	res.sendFile(path.resolve('view/home.html'));
 
 })
 
