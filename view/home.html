@@ -8,26 +8,14 @@
 	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<title>Start Game</title>
 	<style type="text/css">
-		
+	
 	#main{
 		width: 600px;
 		height: 600px;
+		margin-top: 30px;
 		background-color: #0E9F98;
 	}
-	/*.row{
-		width: 50px;
-		height: 50px;
-		background-color: #4F1515;
-	}
-	.span8{
-		background-color: #FFFFFF;
-	}*/
-/*.IMG{
-		width: 250px;
-		height: 250px;
-		margin: 0;
-		float: left;
-	}*/
+	
 
 	</style>
 	<script type="text/javascript">
@@ -46,11 +34,15 @@
 	arrayimg[8] = "img/dog8";
 		
 
-	function start()
+	function start(level)
 	{	
+		if(level==null){
+			length = 2;
+		}else{
+			length ++;
+		}
 		
-		le = 2;
-		k = le*le;
+		k = length*length;
 		indexcat  = Math.floor((Math.random() * k) );
 		var mainNode = document.getElementById('main');
 		for (var i =0; i <k; i++) 
@@ -62,82 +54,41 @@
 				node.src = arrayimg[0];  
 				node.onclick = function(){	;
 			 	$("#main").empty("");
-			 	start2(++level);
+			 	start(++level);
 			 };
 			 }  
 			 else{
-			 	
-			 		// indexdog  = Math.floor((Math.random() * k) );
-			 		indaxarray = Math.floor((Math.random() * 8) +1);
-			 		
-			 			node.src = arrayimg[indaxarray];  
-			 	
-			 	
-			 }
-			 
-			 node.setAttribute("width",600/le);
-			 node.setAttribute("height",600/le);
-			 
-			mainNode.appendChild(node); 					
-		}
-
-	}
-	function start2(level)
-	{	
-		
-		if (level<=15) {
-				if (level==2) {
-			le = 3;
-		}else{
-			le++;;
-		}
-		k = le*le;
-		indexcat  = Math.floor((Math.random() * k) );
-		var mainNode = document.getElementById('main');
-		for (var i =0; i <k; i++) 
-		{
-			
-			 var node = document.createElement("IMG");  
-			 node.setAttribute("id","x"+i );
-			 if(i == indexcat){
-				node.src = arrayimg[0];  
-				node.onclick = function(){	;
-			 	$("#main").empty("");
-			 	start2(++level);
-			 };
-			 }  
-			 else{
-			 		// indexdog  = Math.floor((Math.random() * k) );
 			 		indaxarray = Math.floor((Math.random() * 8) +1);
 			 			node.src = arrayimg[indaxarray];  
-			 	
 			 }
-			 
-			 node.setAttribute("width",600/le);
-			 node.setAttribute("height",600/le);
-			 
+			 node.setAttribute("width",600/length);
+			 node.setAttribute("height",600/length);
 			mainNode.appendChild(node); 					
 		}
-		}else{
-				console.log("high score");
-		}
-
 	}
-
-
-	
 	</script>
-	
 </head>
-<body onload="start()">	
-		<div id="main">
+<body onload="start(null)" background="http://data.whicdn.com/images/161060868/superthumb.jpg">	
+
+	
+			<div class="row">
+					<div class="col-sm-1">
+						
+					</div>
+					<div class="col-sm-6" >
+						<div id="main">
+						</div>
+					</div>
+					<div class="col-sm-3">
+						
+					</div>
+					<div class="col-sm-1">
+						
+					</div>
+			</div>
+
+
 		
-		</div>
-
-
-
-		
-
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
