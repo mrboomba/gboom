@@ -2,7 +2,6 @@
     width: 600px;
     height: 600px;
     margin-top: 30px;
-    /*background-color: #0E9F98;*/
   }
   #time{
     width: 250px;
@@ -10,8 +9,6 @@
     margin-top: 30px;
     background-color: #0E9F98;
      border: 3px solid #ccc;
-     /*opacity:0.5;*/
-
   }
   #scorelevel{
     width: 250px;

@@ -6,87 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<!-- <link rel="stylesheet" href="style.css"> -->
+	<link rel="stylesheet" href="style">
 	<title>Start Game</title>
-	<style type="text/css">
-	
-	#main{
-		width: 600px;
-		height: 600px;
-		margin-top: 30px;
-		/*background-color: #0E9F98;*/
-	}
-	#time{
-		width: 250px;
-		height: 150px;
-		margin-top: 30px;
-		background-color: #0E9F98;
-		 border: 3px solid #ccc;
-		 /*opacity:0.5;*/
-
-	}
-	#scorelevel{
-		width: 250px;
-		height: 400px;
-		margin-top: 30px;
-		background-color: #0E9F98;
-		 border: 3px solid #ccc;
-		 float: left;
-	}
-	#level{
-		width: 250px;
-		height: 150px;
-	}
-	#score{
-		width: 250px;
-		height: 200px;
-	}
-	
-
-	#popup1{
-		text-align: center;
-	}
-	.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-h3{
-	font-size: 2em;
-	font-weight: bold;
-	text-align: center;
-}
-
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-@media screen and (max-width: 700px){
-  .popup{
-    width: 70%;
-  }
-}
-
-	</style>
 	<script type="text/javascript">
 	var level =1;
 	var length=1;
@@ -208,20 +129,6 @@ h3{
 					</div>
 			</div>
 
-<div id="popup1" class="overlay">
-	<div class="popup" id="popup">
-		<h2>Your Score</h2>
-		<!-- <a class="close" href="#">&times;</a> -->
-		<div class="content">
-			 <div class="form">
-       		 <input type="text"  placeholder="Enter Your name ..." /><br/>
-        	 <input type="submit" value="OK" href="#"/>
-     		 </div> 
-		</div>
-	</div>
-</div>
-
-		
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
