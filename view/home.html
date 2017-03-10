@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="style.css">
+	<!-- <link rel="stylesheet" href="style.css"> -->
 	<title>Start Game</title>
 	<style type="text/css">
 	
@@ -90,6 +90,9 @@ h3{
 	<script type="text/javascript">
 	var level =1;
 	var length=1;
+	var c = 10;
+	var t;
+	var timer_is_on = 0;
 			
 	var arrayimg =[];
 	arrayimg[0] = "img/cat";
@@ -100,7 +103,7 @@ h3{
 
 	function start(level)
 	{
-
+		console.log("level"+" "+level);
 		if(level==26){
 			myFunction();
     			 
@@ -110,7 +113,7 @@ h3{
 		}else{
 			length ++;
 		}
-		
+		startCount();
 		k = length*length;
 		indexcat  = Math.floor((Math.random() * k) );
 		var mainNode = document.getElementById('main');
@@ -128,7 +131,7 @@ h3{
 			 }  
 			 else{
 			 		indaxarray = Math.floor((Math.random() * 23) +1);
-			 			node.src = arrayimg[indaxarray];  
+			 		node.src = arrayimg[indaxarray];  
 			 }
 			 node.setAttribute("width",600/length);
 			 node.setAttribute("height",600/length);
@@ -138,23 +141,44 @@ h3{
 		
 	}
 	function myFunction() {
-    var person = prompt("Please enter your name", "Your name...");
-    
-    if (confirm("Please enter your name") == true) {
-       window.location.href = "highscore";
-        
-    } else {
-    	length=1;
-    	start(1);
-    	
-    }
-        
+    	var person = prompt("Please enter your name", "Your name...");  
+    	if (confirm("Please enter your name") == true) {
+      	 window.location.href = "highscore";
+         } else {
+    		length=1;
+    		start(1);
+    	 }
+	}
+	function timedCount() {
+    console.log(c);
+    // var boxtime =document.getElementById('h22');
+    // boxtime.appendChild(c);
+ //    var span = document.createElement("h22");
+	// span.appendChild(document.createTextNode(c));
+	// document.h22.appendChild(span);
+    if(c==0){
+    stopCount();
+    }else{
+    c = c - 1;
+    t = setTimeout(function(){ timedCount() }, 1000);
+   } 
     
 }
+	function startCount() {
+    	if (!timer_is_on) {
+      	  timer_is_on = 1;
+      	  timedCount();
+    	}
+	}	
+
+	function stopCount() {
+   	 	clearTimeout(t);
+   	 	timer_is_on = 0;
+	}
 
 	</script>
 </head>
-<body onload="start(null)" background="http://data.whicdn.com/images/161060868/superthumb.jpg">	
+<body onload="start(null)" background="http://img14.deviantart.net/7716/i/2013/044/8/2/cat_shapes___background_by_lalunatique-d5f93yf.jpg">	
 
 	
 			<div class="row">
@@ -167,6 +191,7 @@ h3{
 					<div class="col-sm-3">
 						<div id="time">
 							<h3>Time</h3>
+							<h2 id="h22"></h2>
 						</div>
 						<div id="scorelevel">
 							<div id="level">
