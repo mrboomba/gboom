@@ -7,90 +7,16 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="style/style.css">
+
 	<title>Start Game</title>
-	<style type="text/css">
-	
-	#main{
-		width: 600px;
-		height: 600px;
-		margin-top: 30px;
-		/*background-color: #0E9F98;*/
-	}
-	#time{
-		width: 250px;
-		height: 150px;
-		margin-top: 30px;
-		background-color: #0E9F98;
-		 border: 3px solid #ccc;
-		 /*opacity:0.5;*/
 
-	}
-	#scorelevel{
-		width: 250px;
-		height: 400px;
-		margin-top: 30px;
-		background-color: #0E9F98;
-		 border: 3px solid #ccc;
-		 float: left;
-	}
-	#level{
-		width: 250px;
-		height: 150px;
-	}
-	#score{
-		width: 250px;
-		height: 200px;
-	}
-	
-
-	#popup1{
-		text-align: center;
-	}
-	.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-h3{
-	font-size: 2em;
-	font-weight: bold;
-	text-align: center;
-}
-
-.popup {
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-.popup .content {
-  max-height: 30%;
-  overflow: auto;
-}
-@media screen and (max-width: 700px){
-  .popup{
-    width: 70%;
-  }
-}
-
-	</style>
 	<script type="text/javascript">
 	var level =1;
 	var length=1;
-			
+	var c = 10;
+	var t;
+	var timer_is_on = 0;
+	var score=0;		
 	var arrayimg =[];
 	arrayimg[0] = "img/cat";
 	for (var i = 1; i < 24; i++) {
@@ -98,19 +24,20 @@ h3{
 	}
 	
 
-	function start(level)
+	function start(input)
 	{
-
-		if(level==26){
+		 document.getElementById("hlv").innerHTML = level;
+		console.log("level"+" "+input);
+		if(input==26){
 			myFunction();
     			 
 		}else{
-			if(level==null){
+			if(input==null){
 			length = 2;
 		}else{
 			length ++;
 		}
-		
+		startCount();
 		k = length*length;
 		indexcat  = Math.floor((Math.random() * k) );
 		var mainNode = document.getElementById('main');
@@ -123,12 +50,14 @@ h3{
 				node.src = arrayimg[0];  
 				node.onclick = function(){	;
 			 	$("#main").empty("");
+			 	document.getElementById("htscore").innerHTML = score+=(c*10);
+			 	c=10;
 			 	start(++level);
 			 };
 			 }  
 			 else{
 			 		indaxarray = Math.floor((Math.random() * 23) +1);
-			 			node.src = arrayimg[indaxarray];  
+			 		node.src = arrayimg[indaxarray];  
 			 }
 			 node.setAttribute("width",600/length);
 			 node.setAttribute("height",600/length);
@@ -138,23 +67,55 @@ h3{
 		
 	}
 	function myFunction() {
-    var person = prompt("Please enter your name", "Your name...");
-    
-    if (confirm("Please enter your name") == true) {
-       window.location.href = "highscore";
-        
-    } else {
-    	length=1;
-    	start(1);
-    	
-    }
-        
+    	var person = prompt("Please enter your name", "Your name...");  
+    	if (confirm("Please enter your name") == true) {
+      	 window.location.href = "highscore";
+         } else {
+         	if(level==1){
+         		$("#main").empty("");
+         		length=1;
+    			level=1;
+    			c=10;
+    			score=0;
+			 	start(1);
+         	}else{
+				length=1;
+    			level=1;
+    			c=10;
+    			score=0;
+    			start(1);
+         	}
+    		
+    	 }
+	}
+	function timedCount() {
+    console.log(c);
+    document.getElementById("htime").innerHTML = c;
+	document.getElementById("hscore").innerHTML =c*10;
+    if(c==0){
+    stopCount();
+    myFunction();
+    }else{
+    c = c - 1;
+    t = setTimeout(function(){ timedCount() }, 1000);
+   } 
     
 }
+	function startCount() {
+    	if (!timer_is_on) {
+      	  timer_is_on = 1;
+      	  timedCount();
+    	}
+	}	
+
+	function stopCount() {
+   	 	clearTimeout(t);
+   	 	timer_is_on = 0;
+	}
 
 	</script>
 </head>
-<body onload="start(null)" background="http://data.whicdn.com/images/161060868/superthumb.jpg">	
+<body onload="start(null)" background="http://img14.deviantart.net/7716/i/2013/044/8/2/cat_shapes___background_by_lalunatique-d5f93yf.jpg">	
 
 	
 			<div class="row">
@@ -167,13 +128,20 @@ h3{
 					<div class="col-sm-3">
 						<div id="time">
 							<h3>Time</h3>
+							<h2 id="htime"></h2>
 						</div>
 						<div id="scorelevel">
 							<div id="level">
 								<h3>Level</h3>
+								<h2 id="hlv"></h2>
 							</div>
 							<div id="score">
+								<h3>Score</h3>
+								<h2 id="hscore">0</h2>
+							</div>
+							<div id="tscore">
 								<h3>Total Score</h3>
+								<h2 id="htscore">0</h2>
 							</div>
 						</div>
 						
@@ -183,20 +151,6 @@ h3{
 					</div>
 			</div>
 
-<div id="popup1" class="overlay">
-	<div class="popup" id="popup">
-		<h2>Your Score</h2>
-		<!-- <a class="close" href="#">&times;</a> -->
-		<div class="content">
-			 <div class="form">
-       		 <input type="text"  placeholder="Enter Your name ..." /><br/>
-        	 <input type="submit" value="OK" href="#"/>
-     		 </div> 
-		</div>
-	</div>
-</div>
-
-		
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
