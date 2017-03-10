@@ -20,26 +20,15 @@
      border: 3px solid #ccc;
      float: left;
   }
-  #level{
+  #level,#score{
     width: 250px;
     height: 100px;
   }
-  #score{
-    width: 250px;
-    height: 100px;
-  }
-  #htime{
+  
+  #htime,#hlv,#hscore,#htscore{
     text-align: center;
   }
-   #hlv{
-    text-align: center;
-  }
-  #hscore{
-    text-align: center;
-  }
-#htscore{
-    text-align: center;
-  }
+  
   
 h3{
   font-size: 2em;
@@ -47,5 +36,3 @@ h3{
   text-align: center;
 }
 
-.
-  
