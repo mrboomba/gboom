@@ -40,7 +40,7 @@ router.get('/img/dog5',function(req,res){
 
 })
 router.get('/img/dog6',function(req,res){
-	res.sendFile(path.resolve('img/cat.jpg'));
+	res.sendFile(path.resolve('img/dog6.jpg'));
 
 })
 router.get('/img/dog7',function(req,res){
