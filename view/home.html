@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
 	<title>Start Game</title>
 	<style type="text/css">
 	
@@ -13,30 +14,98 @@
 		width: 600px;
 		height: 600px;
 		margin-top: 30px;
+		/*background-color: #0E9F98;*/
+	}
+	#time{
+		width: 250px;
+		height: 150px;
+		margin-top: 30px;
 		background-color: #0E9F98;
+		 border: 3px solid #ccc;
+		 /*opacity:0.5;*/
+
+	}
+	#scorelevel{
+		width: 250px;
+		height: 400px;
+		margin-top: 30px;
+		background-color: #0E9F98;
+		 border: 3px solid #ccc;
+		 float: left;
+	}
+	#level{
+		width: 250px;
+		height: 150px;
+	}
+	#score{
+		width: 250px;
+		height: 200px;
 	}
 	
+
+	#popup1{
+		text-align: center;
+	}
+	.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+h3{
+	font-size: 2em;
+	font-weight: bold;
+	text-align: center;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+}
+@media screen and (max-width: 700px){
+  .popup{
+    width: 70%;
+  }
+}
 
 	</style>
 	<script type="text/javascript">
 	var level =1;
-	
+	var length=1;
 			
 	var arrayimg =[];
 	arrayimg[0] = "img/cat";
-	arrayimg[1] = "img/dog1";
-	arrayimg[2] = "img/dog2";
-	arrayimg[3] = "img/dog3";
-	arrayimg[4] = "img/dog4";
-	arrayimg[5] = "img/dog5";
-	arrayimg[6] = "img/dog6";
-	arrayimg[7] = "img/dog7";
-	arrayimg[8] = "img/dog8";
-		
+	for (var i = 1; i < 24; i++) {
+		arrayimg[i] = "img/dog"+i;
+	}
+	
 
 	function start(level)
-	{	
-		if(level==null){
+	{
+
+		if(level==26){
+			myFunction();
+    			 
+		}else{
+			if(level==null){
 			length = 2;
 		}else{
 			length ++;
@@ -58,28 +127,55 @@
 			 };
 			 }  
 			 else{
-			 		indaxarray = Math.floor((Math.random() * 8) +1);
+			 		indaxarray = Math.floor((Math.random() * 23) +1);
 			 			node.src = arrayimg[indaxarray];  
 			 }
 			 node.setAttribute("width",600/length);
 			 node.setAttribute("height",600/length);
 			mainNode.appendChild(node); 					
 		}
+		}
+		
 	}
+	function myFunction() {
+    var person = prompt("Please enter your name", "Your name...");
+    
+    if (confirm("Please enter your name") == true) {
+       window.location.href = "highscore";
+        
+    } else {
+    	length=1;
+    	start(1);
+    	
+    }
+        
+    
+}
+
 	</script>
 </head>
 <body onload="start(null)" background="http://data.whicdn.com/images/161060868/superthumb.jpg">	
 
 	
 			<div class="row">
-					<div class="col-sm-1">
-						
+					<div class="col-sm-2">		
 					</div>
 					<div class="col-sm-6" >
 						<div id="main">
 						</div>
 					</div>
 					<div class="col-sm-3">
+						<div id="time">
+							<h3>Time</h3>
+						</div>
+						<div id="scorelevel">
+							<div id="level">
+								<h3>Level</h3>
+							</div>
+							<div id="score">
+								<h3>Total Score</h3>
+							</div>
+						</div>
 						
 					</div>
 					<div class="col-sm-1">
@@ -87,6 +183,18 @@
 					</div>
 			</div>
 
+<div id="popup1" class="overlay">
+	<div class="popup" id="popup">
+		<h2>Your Score</h2>
+		<!-- <a class="close" href="#">&times;</a> -->
+		<div class="content">
+			 <div class="form">
+       		 <input type="text"  placeholder="Enter Your name ..." /><br/>
+        	 <input type="submit" value="OK" href="#"/>
+     		 </div> 
+		</div>
+	</div>
+</div>
 
 		
 <script src="js/jquery.js"></script>
