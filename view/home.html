@@ -16,7 +16,7 @@
 	var c = 10;
 	var t;
 	var timer_is_on = 0;
-			
+	var score=0;		
 	var arrayimg =[];
 	arrayimg[0] = "img/cat";
 	for (var i = 1; i < 24; i++) {
@@ -24,14 +24,15 @@
 	}
 	
 
-	function start(level)
+	function start(input)
 	{
-		console.log("level"+" "+level);
-		if(level==26){
+		 document.getElementById("hlv").innerHTML = level;
+		console.log("level"+" "+input);
+		if(input==26){
 			myFunction();
     			 
 		}else{
-			if(level==null){
+			if(input==null){
 			length = 2;
 		}else{
 			length ++;
@@ -49,6 +50,8 @@
 				node.src = arrayimg[0];  
 				node.onclick = function(){	;
 			 	$("#main").empty("");
+			 	document.getElementById("htscore").innerHTML = score+=(c*10);
+			 	c=10;
 			 	start(++level);
 			 };
 			 }  
@@ -68,19 +71,30 @@
     	if (confirm("Please enter your name") == true) {
       	 window.location.href = "highscore";
          } else {
-    		length=1;
-    		start(1);
+         	if(level==1){
+         		$("#main").empty("");
+         		length=1;
+    			level=1;
+    			c=10;
+    			score=0;
+			 	start(1);
+         	}else{
+				length=1;
+    			level=1;
+    			c=10;
+    			score=0;
+    			start(1);
+         	}
+    		
     	 }
 	}
 	function timedCount() {
     console.log(c);
-    // var boxtime =document.getElementById('h22');
-    // boxtime.appendChild(c);
- //    var span = document.createElement("h22");
-	// span.appendChild(document.createTextNode(c));
-	// document.h22.appendChild(span);
+    document.getElementById("htime").innerHTML = c;
+	document.getElementById("hscore").innerHTML =c*10;
     if(c==0){
     stopCount();
+    myFunction();
     }else{
     c = c - 1;
     t = setTimeout(function(){ timedCount() }, 1000);
@@ -114,14 +128,20 @@
 					<div class="col-sm-3">
 						<div id="time">
 							<h3>Time</h3>
-							<h2 id="h22"></h2>
+							<h2 id="htime"></h2>
 						</div>
 						<div id="scorelevel">
 							<div id="level">
 								<h3>Level</h3>
+								<h2 id="hlv"></h2>
 							</div>
 							<div id="score">
+								<h3>Score</h3>
+								<h2 id="hscore">0</h2>
+							</div>
+							<div id="tscore">
 								<h3>Total Score</h3>
+								<h2 id="htscore">0</h2>
 							</div>
 						</div>
 						
