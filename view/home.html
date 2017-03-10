@@ -51,25 +51,40 @@
 		
 		le = 2;
 		k = le*le;
+		indexcat  = Math.floor((Math.random() * k) );
 		var mainNode = document.getElementById('main');
 		for (var i =0; i <k; i++) 
 		{
+			
 			 var node = document.createElement("IMG");  
-			 node.setAttribute("id","x"+i );  
-			 node.src = arrayimg[0];  
-			 node.setAttribute("width",600/le);
-			 node.setAttribute("height",600/le);
-			 node.onclick = function(){	;
+			 node.setAttribute("id","x"+i );
+			 if(i == indexcat){
+				node.src = arrayimg[0];  
+				node.onclick = function(){	;
 			 	$("#main").empty("");
 			 	start2(++level);
 			 };
+			 }  
+			 else{
+			 	
+			 		// indexdog  = Math.floor((Math.random() * k) );
+			 		indaxarray = Math.floor((Math.random() * 8) +1);
+			 		
+			 			node.src = arrayimg[indaxarray];  
+			 	
+			 	
+			 }
+			 
+			 node.setAttribute("width",600/le);
+			 node.setAttribute("height",600/le);
+			 
 			mainNode.appendChild(node); 					
 		}
 
 	}
-
 	function start2(level)
 	{	
+		
 		if (level<=15) {
 				if (level==2) {
 			le = 3;
@@ -77,27 +92,39 @@
 			le++;;
 		}
 		k = le*le;
+		indexcat  = Math.floor((Math.random() * k) );
 		var mainNode = document.getElementById('main');
 		for (var i =0; i <k; i++) 
 		{
+			
 			 var node = document.createElement("IMG");  
-			 node.setAttribute("id","x"+i );  
-			 node.src = "http://p2.s1sf.com/ho/0/ud/187/936001/b-2.jpg";  
-			 node.setAttribute("width",600/le);
-			 node.setAttribute("height",600/le);
-			 node.onclick = function(){	;
+			 node.setAttribute("id","x"+i );
+			 if(i == indexcat){
+				node.src = arrayimg[0];  
+				node.onclick = function(){	;
 			 	$("#main").empty("");
 			 	start2(++level);
 			 };
+			 }  
+			 else{
+			 		// indexdog  = Math.floor((Math.random() * k) );
+			 		indaxarray = Math.floor((Math.random() * 8) +1);
+			 			node.src = arrayimg[indaxarray];  
+			 	
+			 }
+			 
+			 node.setAttribute("width",600/le);
+			 node.setAttribute("height",600/le);
+			 
 			mainNode.appendChild(node); 					
 		}
 		}else{
 				console.log("high score");
 		}
 
-		
-
 	}
+
+
 	
 	</script>
 	
@@ -105,23 +132,11 @@
 <body onload="start()">	
 		<div id="main">
 		
-		<!-- <img src="http://p2.s1sf.com/ho/0/ud/187/936001/b-2.jpg" id="Img"> -->
-			<!-- <div class="row">
-		   		 <div class="span8">
-		   			 Main
-		   		 </div>
-		   		 <div class="span4">
-		   			 Sidebar
-		    	</div> -->
 		</div>
 
 
-
-		</div>
 
 		
-		<!-- <div class="container">
-		<div class="cat"></div></div> -->
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
