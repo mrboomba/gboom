@@ -14,9 +14,17 @@ function getHighScore(req,res){
 		else{
 			highscore = _.sortBy(highscore,'score');
 			var result=[];
-			for(var i=_.size(highscore)-1;i>=0;i--){
+			if(_.size(highscore)>=10){
+			for(var i=_.size(highscore)-1 ,j=0;j>10;i--,j++){
 				result.push(highscore[i]);
 				console.log(highscore[i]);
+			  }
+		    }
+			else{
+				for(var i=_.size(highscore)-1 ;i>=0;i--){
+				result.push(highscore[i]);
+				console.log(highscore[i]);
+			  }
 			}
 
 			res.status(200).json({
