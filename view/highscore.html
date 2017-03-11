@@ -58,15 +58,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function () {
-    	$.getJSON('/api/highscore',
-    		function (json) {
+    	$.getJSON('/api/highscore',function (json) {
         	var tr = document.getElementById("printtr");
         	var td = document.getElementById("printtd");
-        for (var i = 0; i < json.length; i++) {
-            // tr = $('<tr/>');
-            td.append("<td>" + i + "</td>");
-            td.append("<td>" + json.highscore[i].name + "</td>");
-            td.append("<td>" + json.highscore[i].score+ "</td>");
+            console.log(json.highscore.length);
+        for (var i = 0; i < json.highscore.length; i++) {
+            td.append(i+1 +" ");
+            td.append(json.highscore[i].name+" ");
+            td.append(json.highscore[i].score+" "+"<br/>");
             tr.append(td);
         }
     });
@@ -78,7 +77,17 @@
 		<div id="highscore">
 				<h3>HIGH SCORE</h3>
 				<div id="head">
-				  <table id="tablee">
+				  <div id="number">
+				  	
+				  </div>
+				  <div id="name">
+				  	
+				  </div>
+				  <div id="score">
+				  	
+				  </div>
+
+				  <table id="tablee" style="width:100%">
 				  	<tr id="headtable">
    					 	<th>Rank</th>
    					 	<th>Name</th> 
