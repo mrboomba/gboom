@@ -41,6 +41,11 @@ function putHighScore(req,res){
 	console.log("post")
 	var name = req.body.name;
 	var score = req.body.score;
+	if(score>2500){
+		res.status(500).json({
+				message: err
+			});
+	}
 	Highscore.create({"name":name,"score":score},function(err,highscore){
 		if(err){
 			res.status(500).json({
