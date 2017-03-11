@@ -32,26 +32,30 @@
 			width: 166.6px;
 			height: 400px;
 			float :left;
+			text-align: center;
 			background-color: #FFFFFF;
 		}
 		#name{
 			width: 166.6px;
 			height: 400px;
 			float :left;
+			text-align: center;
 			background-color: #BBBBBB;
 		}
 		#score{
 			width: 166.6px;
 			height: 400px;
 			float :left;
+			text-align: center;
 			background-color: #AAAAAA;
 		}
 		p{
-			font-size: 1.5em;
-			line-height:1.5em;
+			font-size: 1em;
+			line-height:1.2em;
 			font-weight: bold;
 			text-align: center;
 		}
+		
 	</style>
 		
 		
@@ -59,58 +63,45 @@
 	<script>
 		$(document).ready(function () {
     	$.getJSON('/api/highscore',function (json) {
-        	var tr = document.getElementById("printtr");
-        	var td = document.getElementById("printtd");
         	var num = document.getElementById("number");
         	var name = document.getElementById("name");
         	var score = document.getElementById("score");
-        	var p1 = document.createElement("P");
-        	var p2 = document.createElement("P");
-        	var p3 = document.createElement("P");
-            console.log(json.highscore.length);
+
         for (var i = 0; i < json.highscore.length; i++) {
-            p1.append(i+1 +" ");
-            p2.append(json.highscore[i].name+" ");
-            p3.append(json.highscore[i].score);
-            // td.append("<br/>");
-            // tr.append(td);
-            num.append(p1);
+
+        	var p1 = document.createElement("P");  
+			 p1.setAttribute("id","x"+i );
+			 var p2 = document.createElement("P");  
+			 p2.setAttribute("id","y"+i );
+			 var p3 = document.createElement("P");  
+			 p3.setAttribute("id","z"+i );
+
+           	 p1.append(i+1);
+           	 p2.append(json.highscore[i].name);
+           	 p3.append(json.highscore[i].score);
+
+           	  num.append(p1);
              name.append(p2);
-              score.append(p3);
+             score.append(p3);
+
         }
     });
 });
 	</script>
 </head>
 <body background="http://img14.deviantart.net/7716/i/2013/044/8/2/cat_shapes___background_by_lalunatique-d5f93yf.jpg">
-
 		<div id="highscore">
 				<h3>HIGH SCORE</h3>
 				<div id="head">
 				  <div id="number">
-				  	
+				  	<p id="col">RANK</p>
 				  </div>
 				  <div id="name">
-				  	
+				  <p id="col">NAME</p>
 				  </div>
 				  <div id="score">
-				  	
+				  <p id="col">SCORE</p>
 				  </div>
-
-				  <table id="tablee" style="width:100%">
-				  	<tr id="headtable">
-   					 	<th>Rank</th>
-   					 	<th>Name</th> 
-    					<th>Score</th>
-  				  	</tr>
-				  	<tr id="printtr">
-				  		<td id="printtd">
-				  			
-				  		</td>
-				  		
-
-				  	</tr>
-				  </table>
 				</div>
 		</div>
 </body>
