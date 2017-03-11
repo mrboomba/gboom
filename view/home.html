@@ -28,7 +28,7 @@
 	{
 		 document.getElementById("hlv").innerHTML = level;
 		console.log("level"+" "+input);
-		if(input==26){
+		if(input==30){
 			myFunction();
     			 
 		}else{
@@ -52,6 +52,7 @@
 			 	$("#main").empty("");
 			 	document.getElementById("htscore").innerHTML = score+=(c*10);
 			 	c=10;
+			 	// startCount();
 			 	start(++level);
 			 };
 			 }  
@@ -95,36 +96,27 @@
     	post('/contact/', {name: person,score:score});
       	 window.location.href = "highscore";
          } else {
-         	if(level==1){
          		$("#main").empty("");
-         		length=1;
-    			level=1;
-    			c=10;
-    			score=0;
-			 	start(1);
-         	}else{
 				length=1;
     			level=1;
     			c=10;
     			score=0;
     			start(1);
-         	}
-    		
     	 }
 	}
+
 	function timedCount() {
-    console.log(c);
-    document.getElementById("htime").innerHTML = c;
-	document.getElementById("hscore").innerHTML =c*10;
-    if(c==0){
-    stopCount();
-    myFunction();
-    }else{
-    c = c - 1;
-    t = setTimeout(function(){ timedCount() }, 1000);
-   } 
-    
-}
+			document.getElementById("htime").innerHTML = c;
+			document.getElementById("hscore").innerHTML =c*10;
+	    if(c==0){
+	    	stopCount();
+	    	myFunction();
+	    }else{
+	    	c = c - 1;
+	   		 t = setTimeout(function(){ timedCount() }, 1000);
+	   } 
+	}
+
 	function startCount() {
     	if (!timer_is_on) {
       	  timer_is_on = 1;
@@ -140,8 +132,6 @@
 	</script>
 </head>
 <body onload="start(null)" background="http://img14.deviantart.net/7716/i/2013/044/8/2/cat_shapes___background_by_lalunatique-d5f93yf.jpg">	
-
-	
 			<div class="row">
 					<div class="col-sm-2">		
 					</div>
@@ -171,10 +161,8 @@
 						
 					</div>
 					<div class="col-sm-1">
-						
 					</div>
 			</div>
-
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
