@@ -2,14 +2,14 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 
-
+//path for page
 router.get('/',function(req,res){
 	res.sendFile(path.resolve('view/index.html'));
 
 })
 
-router.get('/home',function(req,res){
-	res.sendFile(path.resolve('view/home.html'));
+router.get('/game',function(req,res){
+	res.sendFile(path.resolve('view/game.html'));
 
 })
 router.get('/highscore',function(req,res){
