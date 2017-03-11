@@ -53,16 +53,21 @@
 			text-align: center;
 		}
 	</style>
-	<script type="text/javascript">
+		
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
 		$(document).ready(function () {
-    	$.getJSON(url,function (json) {
-        	var tr;
+    	$.getJSON('/api/highscore',
+    		function (json) {
+        	var tr = document.getElementById("printtr");
+        	var td = document.getElementById("printtd");
         for (var i = 0; i < json.length; i++) {
-            tr = $('<tr/>');
-            tr.append("<td>" +  i+ "</td>");
-            tr.append("<td>" + json[i].name + "</td>");
-            tr.append("<td>" + json[i].score + "</td>");
-            $('table').append(tr);
+            // tr = $('<tr/>');
+            td.append("<td>" + i + "</td>");
+            td.append("<td>" + json.highscore[i].name + "</td>");
+            td.append("<td>" + json.highscore[i].score+ "</td>");
+            tr.append(td);
         }
     });
 });
@@ -73,23 +78,20 @@
 		<div id="highscore">
 				<h3>HIGH SCORE</h3>
 				<div id="head">
-					<!-- <div id="number">
-						<p>1 <br/>2<br/>
-							3<br/>
-							4<br/>
-							5<br/>
-							6<br/>
-							7<br/>
-							8<br/>
-							9<br/>
-							10<br/></p>
-					</div>
- 					<div id="name"></div>
-					<div id="score"></div> -->
-<table style="width:100%">
-  
-</table>
-					
+				  <table id="tablee">
+				  	<tr id="headtable">
+   					 	<th>Rank</th>
+   					 	<th>Name</th> 
+    					<th>Score</th>
+  				  	</tr>
+				  	<tr id="printtr">
+				  		<td id="printtd">
+				  			
+				  		</td>
+				  		
+
+				  	</tr>
+				  </table>
 				</div>
 		</div>
 </body>
