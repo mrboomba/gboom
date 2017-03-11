@@ -15,7 +15,7 @@ function getHighScore(req,res){
 			highscore = _.sortBy(highscore,'score');
 			var result=[];
 			if(_.size(highscore)>=10){
-			for(var i=_.size(highscore)-1 ,j=0;j>10;i--,j++){
+			for(var i=_.size(highscore)-1 , j=0;j<10;i--,j++){
 				result.push(highscore[i]);
 				console.log(highscore[i]);
 			  }
