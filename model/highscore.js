@@ -4,8 +4,7 @@ var schema = new mongoose.Schema({
       type: String
     },
     score: {
-      type: Number,
-      default: 0
+      type: Number
     }
 });
-  module.exports = mongoose.model('AvailableProducts', schema);
+  module.exports = mongoose.model('Highscore', schema);
