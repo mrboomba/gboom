@@ -22,10 +22,10 @@ app.use('/api',api);
 
 
 app.listen(port, function () {
-  score.remove({},function(err){
-  	if(err){return err}
-  		else  console.log('Meow coming at port 8080!')
-  })
+  // score.remove({},function(err){
+  // 	if(err){return err}
+  		console.log('Meow coming at port 8080!')
+  // })
 
  
 })
