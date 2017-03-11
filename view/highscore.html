@@ -56,6 +56,23 @@
 
 
 	</style>
+	<script type="text/javascript">
+		$(document).ready(function () {
+    	$.getJSON(url,
+    		function (json) {
+        	var tr;
+        for (var i = 0; i < json.length; i++) {
+            tr = $('<tr/>');
+            tr.append("<td>" + json[i].User_Name + "</td>");
+            tr.append("<td>" + json[i].score + "</td>");
+            tr.append("<td>" + json[i].team + "</td>");
+            $('table').append(tr);
+        }
+    });
+});
+
+
+	</script>
 </head>
 <body background="http://img14.deviantart.net/7716/i/2013/044/8/2/cat_shapes___background_by_lalunatique-d5f93yf.jpg">
 

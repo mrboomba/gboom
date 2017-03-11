@@ -1,6 +1,7 @@
 var Highscore = require('../model/highscore');
 var express = require('express');
 var _ = require('underscore');
+var path = require('path');
 var router = express.Router();
 
 function getHighScore(req,res){
@@ -29,6 +30,7 @@ function getHighScore(req,res){
 
 
 function putHighScore(req,res){
+	console.log("post")
 	var name = req.body.name;
 	var score = req.body.score;
 	Highscore.create({"name":name,"score":score},function(err,highscore){
@@ -38,10 +40,7 @@ function putHighScore(req,res){
 			});
 		}
 		else{
-			res.status(200).json({
-				message:'success',
-				highscore:highscore
-			});
+			res.redirect("/highscore");
 		}
 	});
 }

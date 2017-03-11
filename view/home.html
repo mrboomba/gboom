@@ -72,6 +72,7 @@
 
     // The rest of this code assumes you are not using a library.
     // It can be made less wordy if you use one.
+    console.log(path);
     var form = document.createElement("form");
     form.setAttribute("method", method);
     form.setAttribute("action", path);
@@ -92,9 +93,10 @@
 }
 	function myFunction() {
     	var person = prompt("Please enter your name", "Your name...");  
+  
     	if (confirm("Please enter your name") == true) {
-    	post('/contact/', {name: person,score:score});
-      	 window.location.href = "highscore";
+    	  post('/api/highscore', {name: person,score:score});
+      	  
          } else {
          		$("#main").empty("");
 				length=1;
