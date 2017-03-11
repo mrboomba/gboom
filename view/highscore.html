@@ -61,12 +61,22 @@
     	$.getJSON('/api/highscore',function (json) {
         	var tr = document.getElementById("printtr");
         	var td = document.getElementById("printtd");
+        	var num = document.getElementById("number");
+        	var name = document.getElementById("name");
+        	var score = document.getElementById("score");
+        	var p1 = document.createElement("P");
+        	var p2 = document.createElement("P");
+        	var p3 = document.createElement("P");
             console.log(json.highscore.length);
         for (var i = 0; i < json.highscore.length; i++) {
-            td.append(i+1 +" ");
-            td.append(json.highscore[i].name+" ");
-            td.append(json.highscore[i].score+" "+"<br/>");
-            tr.append(td);
+            p1.append(i+1 +" ");
+            p2.append(json.highscore[i].name+" ");
+            p3.append(json.highscore[i].score);
+            // td.append("<br/>");
+            // tr.append(td);
+            num.append(p1);
+             name.append(p2);
+              score.append(p3);
         }
     });
 });
