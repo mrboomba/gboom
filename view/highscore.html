@@ -56,16 +56,18 @@
 
 
 	</style>
-	<script type="text/javascript">
+		
+		
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script>
 		$(document).ready(function () {
-    	$.getJSON(url,
+    	$.getJSON('/api/highscore',
     		function (json) {
         	var tr;
         for (var i = 0; i < json.length; i++) {
             tr = $('<tr/>');
-            tr.append("<td>" + json[i].User_Name + "</td>");
-            tr.append("<td>" + json[i].score + "</td>");
-            tr.append("<td>" + json[i].team + "</td>");
+            tr.append("<td>" + json.highscore[i].name + "</td>");
+            tr.append("<td>" + json.highscore[i].score+ "</td>");
             $('table').append(tr);
         }
     });
@@ -79,6 +81,8 @@
 		<div id="highscore">
 				<h3>HIGH SCORE</h3>
 				<div id="head">
+				<table>
+				</table>
 					<!-- <div id="number">
 						<p>1 <br/>2<br/>
 							3<br/>
