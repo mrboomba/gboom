@@ -1,17 +1,22 @@
-var Highscore = require('../model/highscore');
 var express = require('express');
 var _ = require('underscore');
 var path = require('path');
 var router = express.Router();
+var fs = require('fs');
+
 
 function getHighScore(req,res){
-	Highscore.find({}, function(err ,highscore){
+	var fs = require('fs');
+	var obj;
+     fs.readFile('db.txt', 'utf8', function (err, data) {
 		if(err){
 			res.status(500).json({
 				message: err
 			});
 		}
 		else{
+			obj = JSON.parse(data);
+			console.log(obj)
 			highscore = _.sortBy(highscore,'score');
 			var result=[];
 			if(_.size(highscore)>=10){
@@ -46,8 +51,8 @@ function putHighScore(req,res){
 				message: err
 			});
 	}
-	Highscore.create({"name":name,"score":score},function(err,highscore){
-		if(err){
+	fs.appendFile("db.txt", "{name:"+name+",score:"+score+"},", function(err) {
+    if(err){
 			res.status(500).json({
 				message: err
 			});
@@ -55,7 +60,9 @@ function putHighScore(req,res){
 		else{
 			res.redirect("/highscore");
 		}
-	});
+});
+		
+	
 }
 
 function test(req,res){
