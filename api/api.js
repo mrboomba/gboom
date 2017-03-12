@@ -16,19 +16,16 @@ function getHighScore(req,res){
 		}
 		else{
 			obj = JSON.parse(data);
-			console.log(obj)
-			highscore = _.sortBy(highscore,'score');
+			var highscore = _.sortBy(obj,'score');
 			var result=[];
 			if(_.size(highscore)>=10){
 			for(var i=_.size(highscore)-1 , j=0;j<10;i--,j++){
 				result.push(highscore[i]);
-				console.log(highscore[i]);
 			  }
 		    }
 			else{
 				for(var i=_.size(highscore)-1 ;i>=0;i--){
 				result.push(highscore[i]);
-				console.log(highscore[i]);
 			  }
 			}
 
@@ -43,15 +40,23 @@ function getHighScore(req,res){
 
 
 function putHighScore(req,res){
-	console.log("post")
 	var name = req.body.name;
 	var score = req.body.score;
 	if(score>2500){
 		res.status(500).json({
+				message: "you cheat!"
+			});
+	}fs.readFile('db.txt', 'utf8', function (err, data) {
+		if(err){
+			res.status(500).json({
 				message: err
 			});
-	}
-	fs.appendFile("db.txt", "{name:"+name+",score:"+score+"},", function(err) {
+		}
+		else{
+			var obj = JSON.parse(data);
+			obj.push({name:name,score:score});
+			var json = JSON.stringify(obj);
+			fs.writeFile("db.txt", json,'utf8' ,function(err) {
     if(err){
 			res.status(500).json({
 				message: err
@@ -60,22 +65,14 @@ function putHighScore(req,res){
 		else{
 			res.redirect("/highscore");
 		}
-});
-		
-	
+	});
+		}
+});	
 }
 
-function test(req,res){
-	console.log("test");
-	res.status(200).json({
-		message:'success'
-	});
-	
-}
 
 	router.route('/highscore')
 	.get(getHighScore)
 	.post(putHighScore);
-	router.get('/test',test);
 
 	module.exports = router;

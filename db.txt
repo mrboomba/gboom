@@ -1,1 +1,1 @@
-{name:boomba,score:130}{name:boomba,score:170},
+[{"name":"Your name...","score":"120"},{"name":"boomba","score":"120"},{"name":"boombanaja","score":"160"}]
